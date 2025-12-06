@@ -9,7 +9,9 @@ export default function Footer({ lang, setLang }){
     { label: 'Events & Festivals', href: '/events' },
     { label: 'Cultural Heritage', href: '/about' },
     { label: 'Visitor Guide', href: '/about' },
-    { label: 'Gallery', href: '/about' }
+    { label: 'Gallery', href: '/about' },
+    { label: 'Government', href: '/government' },
+    { label: 'Join Us', href: '/join' }
   ]
   
   const serviceLinks = [
@@ -18,7 +20,9 @@ export default function Footer({ lang, setLang }){
     { label: 'Visa Information', href: '/egov' },
     { label: 'Travel Resources', href: '/about' },
     { label: 'Contact Us', href: '#' },
-    { label: 'FAQ', href: '#' }
+    { label: 'FAQ', href: '#' },
+    { label: 'Investors', href: '/investors' },
+    { label: 'Media & News', href: '/media-news' }
   ]
   
   const socialLinks = [

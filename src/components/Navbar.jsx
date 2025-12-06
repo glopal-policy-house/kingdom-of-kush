@@ -20,7 +20,10 @@ export default function Navbar({ lang, setLang }){
             <Link to="/citizenship" className="text-body-sm text-white-marble hover:text-sand-gold transition-colors duration-300">Citizenship</Link>
             <Link to="/egov" className="text-body-sm text-white-marble hover:text-sand-gold transition-colors duration-300">E-Gov</Link>
             <Link to="/events" className="text-body-sm text-white-marble hover:text-sand-gold transition-colors duration-300">Events</Link>
-            
+            <Link to="/government" className="text-body-sm text-white-marble hover:text-sand-gold transition-colors duration-300">Government</Link>
+            <Link to="/join" className="text-body-sm text-white-marble hover:text-sand-gold transition-colors duration-300">Join</Link>
+            <Link to="/investors" className="text-body-sm text-white-marble hover:text-sand-gold transition-colors duration-300">Investors</Link>
+            <Link to="/media-news" className="text-body-sm text-white-marble hover:text-sand-gold transition-colors duration-300">Media</Link>
             {/* Language Toggle */}
             <button 
               onClick={() => setLang(lang === 'en' ? 'ar' : 'en')} 
@@ -57,6 +60,10 @@ export default function Navbar({ lang, setLang }){
             <Link to="/citizenship" className="block text-body-sm text-white-marble hover:text-sand-gold transition-colors">Citizenship</Link>
             <Link to="/egov" className="block text-body-sm text-white-marble hover:text-sand-gold transition-colors">E-Gov</Link>
             <Link to="/events" className="block text-body-sm text-white-marble hover:text-sand-gold transition-colors">Events</Link>
+            <Link to="/government" className="block text-body-sm text-white-marble hover:text-sand-gold transition-colors">Government</Link>
+            <Link to="/join" className="block text-body-sm text-white-marble hover:text-sand-gold transition-colors">Join</Link>
+            <Link to="/investors" className="block text-body-sm text-white-marble hover:text-sand-gold transition-colors">Investors</Link>
+            <Link to="/media-news" className="block text-body-sm text-white-marble hover:text-sand-gold transition-colors">Media</Link>
           </div>
         )}
       </div>
