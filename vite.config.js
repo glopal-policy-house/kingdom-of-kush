@@ -1,7 +1,14 @@
 import { defineConfig } from 'vite'
 
-// Set base to a relative path so the production build can be opened
-// directly from the filesystem (file://) as `dist/index.html`.
 export default defineConfig({
-  base: './'
+  base: './',
+  server: {
+    port: 5174,
+    host: 'localhost',
+    strictPort: true,
+  },
+  preview: {
+    port: 5174,
+    host: 'localhost',
+  }
 })

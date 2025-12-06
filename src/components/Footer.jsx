@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n, ready } = useTranslation();
   const isRTL = i18n.language === 'ar';
 
-  const quickLinks = React.useMemo(() => [
-    { label: t('nav.home'), href: '/' },
-    { label: t('nav.government'), href: '/government' },
-    { label: t('nav.citizenship'), href: '/citizenship' },
-    { label: t('nav.join'), href: '/join' },
-  ], [t]);
+  const quickLinks = useMemo(() => {
+    if (!ready || !t) return [];
+    return [
+      { label: t('nav.home'), href: '/' },
+      { label: t('nav.government'), href: '/government' },
+      { label: t('nav.citizenship'), href: '/citizenship' },
+      { label: t('nav.join'), href: '/join' },
+    ];
+  }, [t, ready]);
 
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook' },

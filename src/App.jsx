@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
@@ -14,31 +14,49 @@ import Join from './pages/Join'
 import Investors from './pages/Investors'
 import MediaNews from './pages/MediaNews'
 
+// Loading fallback
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#D4AF37] mx-auto mb-4"></div>
+      <p className="text-gray-600">Loading...</p>
+    </div>
+  </div>
+)
+
 export default function App(){
-  const { i18n } = useTranslation()
+  const { i18n, ready } = useTranslation()
   const [lang, setLang] = useState('en')
 
   useEffect(() => {
-    document.documentElement.lang = i18n.language
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr'
-    setLang(i18n.language)
-  }, [i18n.language])
+    if (ready) {
+      document.documentElement.lang = i18n.language
+      document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr'
+      setLang(i18n.language)
+    }
+  }, [i18n.language, ready])
+
+  if (!ready) {
+    return <LoadingFallback />
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home lang={lang} />} />
-          <Route path="/about" element={<AboutUs lang={lang} />} />
-          <Route path="/government" element={<Government />} />
-          <Route path="/citizenship" element={<Citizenship />} />
-          <Route path="/join" element={<Join />} />
-          <Route path="/investors" element={<Investors />} />
-          <Route path="/media" element={<MediaNews />} />
-          <Route path="/egov" element={<Egov />} />
-          <Route path="/events" element={<Events />} />
-        </Routes>
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes>
+            <Route path="/" element={<Home lang={lang} />} />
+            <Route path="/about" element={<AboutUs lang={lang} />} />
+            <Route path="/government" element={<Government />} />
+            <Route path="/citizenship" element={<Citizenship />} />
+            <Route path="/join" element={<Join />} />
+            <Route path="/investors" element={<Investors />} />
+            <Route path="/media" element={<MediaNews />} />
+            <Route path="/egov" element={<Egov />} />
+            <Route path="/events" element={<Events />} />
+          </Routes>
+        </Suspense>
       </div>
       <Footer />
     </div>

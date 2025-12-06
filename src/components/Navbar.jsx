@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n, ready } = useTranslation();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
 
-  // Build nav items dynamically to ensure translations are available
-  const navItems = React.useMemo(() => [
-    { label: t('nav.home'), path: '/' },
-    { label: 'About', path: '/about' },
-    { label: t('nav.government'), path: '/government' },
-    { label: t('nav.citizenship'), path: '/citizenship' },
-    { label: 'Events', path: '/events' },
-    { label: 'E-Gov', path: '/egov' },
-    { label: t('nav.join'), path: '/join' },
-    { label: t('nav.investors'), path: '/investors' },
-    { label: t('nav.media'), path: '/media' },
-  ], [t]);
+  // Only compute nav items once translation is ready
+  const navItems = useMemo(() => {
+    if (!ready || !t) return [];
+    return [
+      { label: t('nav.home'), path: '/' },
+      { label: 'About', path: '/about' },
+      { label: t('nav.government'), path: '/government' },
+      { label: t('nav.citizenship'), path: '/citizenship' },
+      { label: 'Events', path: '/events' },
+      { label: 'E-Gov', path: '/egov' },
+      { label: t('nav.join'), path: '/join' },
+      { label: t('nav.investors'), path: '/investors' },
+      { label: t('nav.media'), path: '/media' },
+    ];
+  }, [t, ready]);
 
   const toggleLanguage = (lang) => {
     i18n.changeLanguage(lang);
