@@ -5,23 +5,14 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'luc
 import { motion } from 'framer-motion';
 
 export default function Footer() {
-  const { t, i18n, ready } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
 
-  // Fallback translation function
-  const getLabel = (key) => {
-    try {
-      return ready ? t(key) : '';
-    } catch {
-      return '';
-    }
-  };
-
   const quickLinks = [
-    { label: getLabel('nav.home'), href: '/' },
-    { label: getLabel('nav.government'), href: '/government' },
-    { label: getLabel('nav.citizenship'), href: '/citizenship' },
-    { label: getLabel('nav.join'), href: '/join' },
+    { label: t('nav.home'), href: '/' },
+    { label: t('nav.government'), href: '/government' },
+    { label: t('nav.citizenship'), href: '/citizenship' },
+    { label: t('nav.join'), href: '/join' },
   ];
 
   const socialLinks = [
@@ -42,11 +33,9 @@ export default function Footer() {
             transition={{ delay: 0 }}
             className="space-y-4"
           >
-            <h3 className="text-xl font-bold text-[#D4AF37]">
-              {getLabel('footer.about_title') || 'About Kingdom of Kush'}
-            </h3>
+            <h3 className="text-xl font-bold text-[#D4AF37]">{t('footer.about_title')}</h3>
             <p className="text-sm text-gray-300">
-              {getLabel('footer.about_desc') || 'Building the future of African governance and innovation through digital transformation.'}
+              {t('footer.about_desc')}
             </p>
           </motion.div>
 
@@ -57,7 +46,7 @@ export default function Footer() {
             transition={{ delay: 0.1 }}
             className="space-y-4"
           >
-            <h3 className="text-xl font-bold text-[#D4AF37]">{getLabel('footer.quick_links') || 'Quick Links'}</h3>
+            <h3 className="text-xl font-bold text-[#D4AF37]">{t('footer.quick_links')}</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -76,23 +65,23 @@ export default function Footer() {
             transition={{ delay: 0.2 }}
             className="space-y-4"
           >
-            <h3 className="text-xl font-bold text-[#D4AF37]">{getLabel('footer.contact') || 'Contact Us'}</h3>
+            <h3 className="text-xl font-bold text-[#D4AF37]">{t('footer.contact')}</h3>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <Mail size={18} className="text-[#D4AF37] mt-1 flex-shrink-0" />
                 <a href="mailto:info@kingdomofkush.org" className="text-sm text-gray-300 hover:text-[#D4AF37] transition-colors">
-                  {getLabel('footer.email') || 'info@kingdomofkush.org'}
+                  {t('footer.email')}
                 </a>
               </div>
               <div className="flex items-start space-x-3">
                 <Phone size={18} className="text-[#D4AF37] mt-1 flex-shrink-0" />
                 <a href="tel:+12025550123" className="text-sm text-gray-300 hover:text-[#D4AF37] transition-colors">
-                  {getLabel('footer.phone') || '+1 (202) 555-0123'}
+                  {t('footer.phone')}
                 </a>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin size={18} className="text-[#D4AF37] mt-1 flex-shrink-0" />
-                <p className="text-sm text-gray-300">{getLabel('footer.address') || 'Washington, D.C., USA'}</p>
+                <p className="text-sm text-gray-300">{t('footer.address')}</p>
               </div>
             </div>
           </motion.div>
@@ -104,7 +93,7 @@ export default function Footer() {
             transition={{ delay: 0.3 }}
             className="space-y-4"
           >
-            <h3 className="text-xl font-bold text-[#D4AF37]">{getLabel('footer.follow_us') || 'Follow Us'}</h3>
+            <h3 className="text-xl font-bold text-[#D4AF37]">{t('footer.follow_us')}</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
@@ -126,7 +115,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-[#D4AF37]/20 pt-8">
           <p className="text-center text-sm text-gray-300">
-            &copy; {new Date().getFullYear()} Kingdom of Kush. {getLabel('footer.rights') || 'All rights reserved.'}
+            &copy; {new Date().getFullYear()} Kingdom of Kush. {t('footer.rights')}
           </p>
         </div>
       </div>

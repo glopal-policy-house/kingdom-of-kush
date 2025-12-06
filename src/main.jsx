@@ -6,9 +6,7 @@ import i18n from './i18n/config'
 import App from './App'
 import './index.css'
 
-const root = createRoot(document.getElementById('root'))
-
-root.render(
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <I18nextProvider i18n={i18n}>
       <HashRouter>

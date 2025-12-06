@@ -1,31 +1,25 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
-  const { t, i18n, ready } = useTranslation();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
 
-  // Fallback translations if i18n not ready
-  const getLabel = (key) => {
-    try {
-      return ready ? t(key) : key.split('.')[1];
-    } catch {
-      return key.split('.')[1];
-    }
-  };
-
   const navItems = [
-    { label: getLabel('nav.home'), path: '/' },
-    { label: getLabel('nav.government'), path: '/government' },
-    { label: getLabel('nav.citizenship'), path: '/citizenship' },
-    { label: getLabel('nav.join'), path: '/join' },
-    { label: getLabel('nav.investors'), path: '/investors' },
-    { label: getLabel('nav.media'), path: '/media' },
+    { label: t('nav.home'), path: '/' },
+    { label: 'About', path: '/about' },
+    { label: t('nav.government'), path: '/government' },
+    { label: t('nav.citizenship'), path: '/citizenship' },
+    { label: 'Events', path: '/events' },
+    { label: 'E-Gov', path: '/egov' },
+    { label: t('nav.join'), path: '/join' },
+    { label: t('nav.investors'), path: '/investors' },
+    { label: t('nav.media'), path: '/media' },
   ];
 
   const toggleLanguage = (lang) => {
