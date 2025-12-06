@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
@@ -16,12 +16,10 @@ import MediaNews from './pages/MediaNews'
 
 export default function App(){
   const { i18n } = useTranslation()
-  const [lang, setLang] = useState('en')
 
   useEffect(() => {
     document.documentElement.lang = i18n.language
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr'
-    setLang(i18n.language)
   }, [i18n.language])
 
   return (
@@ -29,8 +27,8 @@ export default function App(){
       <Navbar />
       <div className="flex-1">
         <Routes>
-          <Route path="/" element={<Home lang={lang} />} />
-          <Route path="/about" element={<AboutUs lang={lang} />} />
+          <Route path="/" element={<Home lang={i18n.language} />} />
+          <Route path="/about" element={<AboutUs lang={i18n.language} />} />
           <Route path="/government" element={<Government />} />
           <Route path="/citizenship" element={<Citizenship />} />
           <Route path="/join" element={<Join />} />
