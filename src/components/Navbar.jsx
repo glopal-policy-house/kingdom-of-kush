@@ -10,7 +10,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
 
-  const navItems = [
+  // Build nav items dynamically to ensure translations are available
+  const navItems = React.useMemo(() => [
     { label: t('nav.home'), path: '/' },
     { label: 'About', path: '/about' },
     { label: t('nav.government'), path: '/government' },
@@ -20,7 +21,7 @@ export default function Navbar() {
     { label: t('nav.join'), path: '/join' },
     { label: t('nav.investors'), path: '/investors' },
     { label: t('nav.media'), path: '/media' },
-  ];
+  ], [t]);
 
   const toggleLanguage = (lang) => {
     i18n.changeLanguage(lang);
