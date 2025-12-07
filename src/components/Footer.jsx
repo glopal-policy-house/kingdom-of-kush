@@ -9,14 +9,14 @@ export default function Footer() {
   const isRTL = i18n.language === 'ar';
 
   const quickLinks = useMemo(() => {
-    if (!ready || !t) return [];
+    if (!ready) return [];
     return [
-      { label: t('nav.home'), href: '/' },
-      { label: t('nav.government'), href: '/government' },
-      { label: t('nav.citizenship'), href: '/citizenship' },
-      { label: t('nav.join'), href: '/join' },
+      { label: 'Home', href: '/' },
+      { label: 'Government', href: '/government' },
+      { label: 'Citizenship', href: '/citizenship' },
+      { label: 'Join', href: '/join' },
     ];
-  }, [t, ready]);
+  }, [ready]);
 
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook' },

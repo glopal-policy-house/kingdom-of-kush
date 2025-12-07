@@ -6,16 +6,27 @@ import { destinations, events, locales } from '../data/data'
 import { Link } from 'react-router-dom'
 
 export default function Home({ lang }){
-  const t = locales[lang]
+  // Default to 'en' if lang is not provided or locales[lang] is undefined
+  const validLang = (lang && locales[lang]) ? lang : 'en'
+  const t = locales[validLang] || locales.en
+  
+  // Ensure t has all required properties with fallbacks
+  const safeT = {
+    heroTitle: t?.heroTitle || 'Experience the Future of the Ancient Kingdom of Kush',
+    heroSubtitle: t?.heroSubtitle || 'Where Nubian heritage meets a bold, sustainable future — spanning Sudan and Egypt.',
+    explore: t?.explore || 'Explore Kingdom',
+    plan: t?.plan || 'Plan Your Visit',
+    siteTitle: t?.siteTitle || 'Kingdom of Kush',
+  }
   
   return (
     <main>
       {/* ===== HERO SECTION ===== */}
       <Hero 
-        title={t.heroTitle} 
-        subtitle={t.heroSubtitle} 
-        ctaLeft={t.explore} 
-        ctaRight={t.plan} 
+        title={safeT.heroTitle} 
+        subtitle={safeT.heroSubtitle} 
+        ctaLeft={safeT.explore} 
+        ctaRight={safeT.plan} 
         mediaUrl="/assets/doc_2025-12-02_02-34-50.mp4"
         ctaLeftLink="#destinations"
         ctaRightLink="#citizenship"

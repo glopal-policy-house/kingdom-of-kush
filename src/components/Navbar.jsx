@@ -12,19 +12,19 @@ export default function Navbar() {
 
   // Only compute nav items once translation is ready
   const navItems = useMemo(() => {
-    if (!ready || !t) return [];
+    if (!ready) return [];
     return [
-      { label: t('nav.home'), path: '/' },
+      { label: 'Home', path: '/' },
       { label: 'About', path: '/about' },
-      { label: t('nav.government'), path: '/government' },
-      { label: t('nav.citizenship'), path: '/citizenship' },
+      { label: 'Government', path: '/government' },
+      { label: 'Citizenship', path: '/citizenship' },
       { label: 'Events', path: '/events' },
       { label: 'E-Gov', path: '/egov' },
-      { label: t('nav.join'), path: '/join' },
-      { label: t('nav.investors'), path: '/investors' },
-      { label: t('nav.media'), path: '/media' },
+      { label: 'Join', path: '/join' },
+      { label: 'Investors', path: '/investors' },
+      { label: 'Media', path: '/media' },
     ];
-  }, [t, ready]);
+  }, [ready]);
 
   const toggleLanguage = (lang) => {
     i18n.changeLanguage(lang);
