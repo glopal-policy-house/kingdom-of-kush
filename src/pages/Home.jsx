@@ -1,9 +1,9 @@
 import React from 'react'
-import Hero from '../components/Hero'
-import Card from '../components/Card'
+import HeroSlideshow from '../components/HeroSlideshow'
 import Slider from '../components/Slider'
-import { destinations, events, locales } from '../data/data'
+import { events, locales } from '../data/data'
 import { Link } from 'react-router-dom'
+import { Users, Calendar, Shield, TrendingUp } from 'lucide-react'
 
 export default function Home({ lang }){
   // Default to 'en' if lang is not provided or locales[lang] is undefined
@@ -12,8 +12,8 @@ export default function Home({ lang }){
   
   // Ensure t has all required properties with fallbacks
   const safeT = {
-    heroTitle: t?.heroTitle || 'Experience the Future of the Ancient Kingdom of Kush',
-    heroSubtitle: t?.heroSubtitle || 'Where Nubian heritage meets a bold, sustainable future — spanning Sudan and Egypt.',
+    heroTitle: t?.heroTitle || 'welcome to the Kingdom of Kush',
+    heroSubtitle: t?.heroSubtitle || 'Where future becomes tomorrow',
     explore: t?.explore || 'Explore Kingdom',
     plan: t?.plan || 'Plan Your Visit',
     siteTitle: t?.siteTitle || 'Kingdom of Kush',
@@ -21,43 +21,80 @@ export default function Home({ lang }){
   
   return (
     <main>
-      {/* ===== HERO SECTION ===== */}
-      <Hero 
+      {/* ===== HERO SECTION WITH SLIDESHOW ===== */}
+      <HeroSlideshow 
         title={safeT.heroTitle} 
         subtitle={safeT.heroSubtitle} 
-        ctaLeft={safeT.explore} 
-        ctaRight={safeT.plan} 
-        mediaUrl="/assets/doc_2025-12-02_02-34-50.mp4"
-        ctaLeftLink="#destinations"
-        ctaRightLink="#citizenship"
+        ctaText={safeT.explore}
+        ctaLink="#destinations"
       />
 
-      {/* ===== FEATURED DESTINATIONS ===== */}
+      {/* ===== DISCOVER SECTION ===== */}
       <section id="destinations" className="py-section px-container">
         <div className="max-w-container mx-auto">
           {/* Section Header */}
           <div className="text-center mb-3xl md:mb-5xl space-y-md">
             <h2 className="text-display-md md:text-display-lg font-display font-bold text-primary">
-              Discover Ancient & Future Kush
+              Explore Key Sections
             </h2>
             <p className="text-body-md md:text-body-lg text-primary/70 max-w-2xl mx-auto">
-              Explore four iconic destinations spanning the Kingdom of Kush across Sudan and Egypt.
+              Access citizenship opportunities, cultural events, digital governance, and investment options.
             </p>
           </div>
           
-          {/* Grid: Meroe main card + remaining destination cards on same level */}
+          {/* Grid: Discover Section Items */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md sm:gap-lg lg:gap-2xl">
-            {/* Meroe Card - same size as other destination cards */}
-            <div className="animate-fade-in-up" style={{ animationDelay: `0ms` }}>
-              <Card item={destinations[0]} />
-            </div>
-
-            {/* Remaining destination cards */}
-            {destinations.slice(1).map((d, idx) => (
-              <div key={d.id} className="animate-fade-in-up" style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
-                <Card item={d} />
+            {/* Citizenship */}
+            <Link to="/citizenship" className="group">
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 rounded-2xl p-8 h-full hover:border-gold/50 hover:shadow-lg transition-all">
+                <div className="w-14 h-14 bg-[#0B3D2E] rounded-xl flex items-center justify-center mb-4 group-hover:shadow-lg transition-all">
+                  <Users size={32} className="text-white" />
+                </div>
+                <h3 className="text-2xl font-display font-bold text-primary mb-2">Citizenship</h3>
+                <p className="text-body-md text-primary/70 group-hover:text-primary/80 transition">
+                  Join the Kingdom as a citizen and access exclusive benefits and opportunities.
+                </p>
               </div>
-            ))}
+            </Link>
+
+            {/* Events */}
+            <Link to="/events" className="group">
+              <div className="bg-gradient-to-br from-gold/10 to-gold/5 border-2 border-gold/20 rounded-2xl p-8 h-full hover:border-gold/50 hover:shadow-lg transition-all">
+                <div className="w-14 h-14 bg-[#0B3D2E] rounded-xl flex items-center justify-center mb-4 group-hover:shadow-lg transition-all">
+                  <Calendar size={32} className="text-white" />
+                </div>
+                <h3 className="text-2xl font-display font-bold text-primary mb-2">Events</h3>
+                <p className="text-body-md text-primary/70 group-hover:text-primary/80 transition">
+                  Experience cultural celebrations and innovation summits across the Kingdom.
+                </p>
+              </div>
+            </Link>
+
+            {/* E-Gov */}
+            <Link to="/egov" className="group">
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 rounded-2xl p-8 h-full hover:border-gold/50 hover:shadow-lg transition-all">
+                <div className="w-14 h-14 bg-[#0B3D2E] rounded-xl flex items-center justify-center mb-4 group-hover:shadow-lg transition-all">
+                  <Shield size={32} className="text-white" />
+                </div>
+                <h3 className="text-2xl font-display font-bold text-primary mb-2">E-Gov</h3>
+                <p className="text-body-md text-primary/70 group-hover:text-primary/80 transition">
+                  Access digital government services and manage documents securely online.
+                </p>
+              </div>
+            </Link>
+
+            {/* Investors */}
+            <Link to="/investors" className="group">
+              <div className="bg-gradient-to-br from-gold/10 to-gold/5 border-2 border-gold/20 rounded-2xl p-8 h-full hover:border-gold/50 hover:shadow-lg transition-all">
+                <div className="w-14 h-14 bg-[#0B3D2E] rounded-xl flex items-center justify-center mb-4 group-hover:shadow-lg transition-all">
+                  <TrendingUp size={32} className="text-white" />
+                </div>
+                <h3 className="text-2xl font-display font-bold text-primary mb-2">Investors</h3>
+                <p className="text-body-md text-primary/70 group-hover:text-primary/80 transition">
+                  Explore premium investment tiers and grow wealth with the Kingdom.
+                </p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -78,6 +115,50 @@ export default function Home({ lang }){
               { title: 'Heritage & Legacy', img: 'https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=80', desc: 'Rooted in one of the worlds oldest kingdoms with a legacy of innovation and culture.' },
               { title: 'Culture & Innovation', img: 'https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=80', desc: 'A blend of ceremonial tradition and forward-looking development, from festivals to smart infrastructure.' },
               { title: 'Natural Beauty', img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80', desc: 'From the Nile to the desert, dramatic landscapes form the backbone of cultural life and tourism.' }
+            ].map((card, idx) => (
+              <div key={card.title} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition p-4 animate-fade-in-up" style={{ animationDelay: `${idx * 80}ms` }}>
+                <img src={card.img} alt={card.title} className="rounded-t-xl w-full h-[200px] object-cover" />
+                <div className="p-4">
+                  <h3 className="mt-4 text-xl font-serif text-[#0A2F24]">{card.title}</h3>
+                  <p className="text-gray-600 mt-2">{card.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PARTNERS SECTION ===== */}
+      <section className="py-4xl md:py-5xl px-container">
+        <div className="max-w-container mx-auto">
+          {/* Section Header - Centered */}
+          <div className="text-center mb-3xl md:mb-5xl space-y-md">
+            <h2 className="text-display-md md:text-display-lg font-display font-bold text-primary">
+              Strategic Partners & Collaborators
+            </h2>
+            <p className="text-body-md md:text-body-lg text-primary/70 max-w-2xl mx-auto">
+              Working with leading organizations to build a sustainable, innovative future for the Kingdom of Kush.
+            </p>
+          </div>
+          
+          {/* Card Grid: Partners (3 cards) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            {[
+              { 
+                title: 'International Development Fund', 
+                img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80', 
+                desc: 'Partnering on sustainable infrastructure and economic development across the Kingdom.' 
+              },
+              { 
+                title: 'Digital Innovation Lab', 
+                img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80', 
+                desc: 'Co-developing digital governance solutions and e-services for modern citizen engagement.' 
+              },
+              { 
+                title: 'Cultural Heritage Consortium', 
+                img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80', 
+                desc: 'Preserving and promoting the rich cultural legacy of the Kingdom globally.' 
+              }
             ].map((card, idx) => (
               <div key={card.title} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition p-4 animate-fade-in-up" style={{ animationDelay: `${idx * 80}ms` }}>
                 <img src={card.img} alt={card.title} className="rounded-t-xl w-full h-[200px] object-cover" />
