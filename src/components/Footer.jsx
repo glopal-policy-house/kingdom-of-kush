@@ -36,6 +36,11 @@ export default function Footer() {
             transition={{ delay: 0 }}
             className="space-y-4"
           >
+            <img
+              src="/assets/images/6.png"
+              alt="Kingdom of Kush logo"
+              className="w-15 h-auto"
+            />
             <h3 className="text-xl font-bold text-[#D4AF37]">{t('footer.about_title')}</h3>
             <p className="text-sm text-gray-300">
               {t('footer.about_desc')}
@@ -118,7 +123,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-[#D4AF37]/20 pt-8">
           <p className="text-center text-sm text-gray-300">
-            &copy; {new Date().getFullYear()} Kingdom of Kush. {t('footer.rights')}
+            &copy; {new Date().getFullYear()}<span className='text-sand-gold'> Kingdom of Kush. </span> {t('footer.rights')}
           </p>
         </div>
       </div>

@@ -140,7 +140,7 @@ export default function Events(){
             initial={{ opacity: 0, scale: 0.8 }}
             animate={titleInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-sand-gold font-semibold text-lg tracking-widest uppercase"
+            className="text-white-marble font-semibold text-lg tracking-widest uppercase"
           >
             The Premier Summit
           </motion.p>
@@ -149,7 +149,7 @@ export default function Events(){
             initial={{ opacity: 0, scale: 0.9 }}
             animate={titleInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 100 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white-marble leading-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-sand-gold  leading-tight"
           >
             US-Africa Forum 2025
           </motion.h1>
@@ -158,7 +158,7 @@ export default function Events(){
             initial={{ opacity: 0, y: 20 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-2xl md:text-3xl font-display text-sand-gold"
+            className="text-2xl md:text-3xl font-display text-white-marble"
           >
             Building Partnerships, Creating Opportunities
           </motion.p>
