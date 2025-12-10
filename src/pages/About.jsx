@@ -13,7 +13,7 @@ export default function About({ lang }){
         ref={heroRef}
         className="min-h-screen flex items-center justify-center text-center py-20 px-4 relative"
         style={{
-          backgroundImage: 'url(/assets/images/kush5.jpg)',
+          backgroundImage: 'url(/assets/images/kush-q.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

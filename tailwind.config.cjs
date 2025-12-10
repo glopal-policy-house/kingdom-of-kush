@@ -18,7 +18,8 @@ module.exports = {
           100: '#FBF0D9',
           200: '#F0D4A6',
           300: '#E1B66D',
-          600: '#B88B2A'
+          600: '#B88B2A',
+          'light': '#F7E6BE'
         },
         'gold-pressed': '#B88B2A',
         white: '#FFFFFF',
@@ -90,10 +91,15 @@ module.exports = {
           '0%': { opacity: '0.6', transform: 'scale(0.98)' },
           '50%': { opacity: '1', transform: 'scale(1.02)' },
           '100%': { opacity: '0.6', transform: 'scale(0.98)' }
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
         }
       },
       animation: {
-        'star-twinkle': 'twinkle 6s ease-in-out infinite'
+        'star-twinkle': 'twinkle 6s ease-in-out infinite',
+        'marquee': 'marquee 40s linear infinite',
       }
     }
   },

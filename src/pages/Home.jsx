@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroSlideshow from '../components/HeroSlideshow'
+import ImageMarquee from '../components/ImageMarquee'
 import Slider from '../components/Slider'
 import { events, locales } from '../data/data'
 import { Link } from 'react-router-dom'
@@ -23,11 +24,14 @@ export default function Home({ lang }){
     <main>
       {/* ===== HERO SECTION WITH SLIDESHOW ===== */}
       <HeroSlideshow 
+        pretext={safeT.pretext}
         title={safeT.heroTitle} 
         subtitle={safeT.heroSubtitle} 
         ctaText={safeT.explore}
         ctaLink="#destinations"
       />
+
+      <ImageMarquee />
 
       {/* ===== DISCOVER SECTION ===== */}
       <section id="destinations" className="py-section px-container">
@@ -358,7 +362,7 @@ export default function Home({ lang }){
           <div className="text-center mt-4xl">
             <Link 
               to="/egov"
-              className="inline-block px-2xl py-md rounded-sm bg-dark-green text-white-marble font-semibold text-body-md hover:bg-dark-green/90 transition-colors duration-300 shadow-card hover:shadow-luxury"
+              className="bg-red-600 text-white-marble font-bold text-base sm:text-lg px-6 sm:px-8 py-3 rounded-lg shadow-lg hover:bg-red-700 transition-colors duration-300 items-center justify-center gap-1"
             >
               Explore All Services →
             </Link>
